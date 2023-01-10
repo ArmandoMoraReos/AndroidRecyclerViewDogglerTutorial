@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Dogglers</string>
+    <string name="dog1">bella</string>
+    <string name="dog2">faye</string>
+    <string name="dog3">frankie</string>
+    <string name="dog4">leroy</string>
+    <string name="dog5">nox</string>
+    <string name="dog6">tzeitel</string>
+    <string name="hobbie1">morder</string>
+    <string name="hobbie2">comer</string>
+    <string name="hobbie3">dormir</string>
+</resources>
