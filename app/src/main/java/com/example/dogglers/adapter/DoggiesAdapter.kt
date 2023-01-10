@@ -8,9 +8,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dogglers.R
+import com.example.dogglers.const.LayoutConst
 import com.example.dogglers.model.Dog
 
-class DoggiesAdapter(private val context : Context, private val dogList : List<Dog>)
+class DoggiesAdapter(private val context : Context,
+                     private val dogList : List<Dog>,
+                     private val layout : Int)
     : RecyclerView.Adapter<DoggiesAdapter.DoggiesViewHolder>()  {
 
     class DoggiesViewHolder(private val view : View) : RecyclerView.ViewHolder(view){
@@ -21,8 +24,12 @@ class DoggiesAdapter(private val context : Context, private val dogList : List<D
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DoggiesViewHolder {
-       val layout = LayoutInflater.from(context).inflate(R.layout.vertical_horizontal_list_item,
-           parent, false)
+        val layout = if(layout == LayoutConst.VERTICAL || layout == LayoutConst.HORIZONTAL) {
+            LayoutInflater.from(context).inflate(R.layout.vertical_horizontal_list_item,
+                parent, false)
+        }else{
+                LayoutInflater.from(context).inflate(R.layout.grid_list_item, parent, false)
+        }
         return DoggiesViewHolder(layout)
     }
 
@@ -31,7 +38,7 @@ class DoggiesAdapter(private val context : Context, private val dogList : List<D
         holder.dogPicture.setImageResource(item.dogPicture)
         holder.dogName.text = context.resources.getString(item.name)
         holder.dogAge.text = item.dogAge.toString()
-        holder.dogHobbie.text = item.dogHobbies.toString()
+        holder.dogHobbie.text = context.resources.getString(item.dogHobbies)
     }
 
     override fun getItemCount() = dogList.size

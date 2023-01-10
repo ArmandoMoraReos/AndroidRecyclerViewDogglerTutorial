@@ -3,7 +3,7 @@ package com.example.dogglers.data
 import com.example.dogglers.R
 import com.example.dogglers.model.Dog
 
-class Datasource {
+class DataSource {
 
     fun loadDogs() : List<Dog>{
         return listOf(Dog(R.string.dog1, 2, R.string.hobbie1, R.drawable.bella),

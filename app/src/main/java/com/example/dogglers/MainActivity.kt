@@ -1,11 +1,8 @@
 package com.example.dogglers
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
-import com.example.dogglers.adapter.DoggiesAdapter
-import com.example.dogglers.data.Datasource
 import com.example.dogglers.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -18,9 +15,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initUi(){
-        val listDog = Datasource().loadDogs()
-        binding.doggiesRv.adapter = DoggiesAdapter(this, listDog)
-        binding.doggiesRv.layoutManager = LinearLayoutManager(this)
+        binding.verticalBtn.setOnClickListener{
+            val intent = Intent(this, VerticalListActivity::class.java)
+            startActivity(intent)
+        }
+        binding.horizontalBtn.setOnClickListener {
+            val intent = Intent(this, HorizontalListActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.gridBtn.setOnClickListener {
+            val intent = Intent(this, GridListActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 }
